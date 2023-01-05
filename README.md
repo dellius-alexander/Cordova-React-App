@@ -1,44 +1,4 @@
-<h1 ><a id="title" href="#">Web Scraper</a> </h1>
-
-<hr/>
-
-<h2><a id="overview">Overview</a></h2>
-
-A `web scraper` is a tool or piece of software that is used to `extract data` from
-websites and APIs. It works by making HTTP requests to a website's server, downloading
-the HTML of the web page, and then parsing that HTML to extract the data you're
-interested in.
-
-Web scrapers can be used to gather data from a variety of websites, such as
-`online stores`, `news sites`, `social media platforms`, and `government websites`.
-They can be used for a wide range of purposes, including `data mining`, `data
-analysis`, and `automated data collection`.
-
-Web scrapers can be built using a variety of programming languages and tools,
-such as `Javascript`, `Python`, `Java`, and `Ruby`. Some web scrapers are simple scripts that can
-be run from the command line, while others are more complex applications with
-a graphical user interface (GUI).
-
-Overall, web scrapers are useful for extracting data from websites that may
-not have an API or other means of accessing their data. They can save time
-and resources by automating data collection tasks and allowing organizations
-to gather and analyze large amounts of data quickly and efficiently.
-
-There are several benefits to building a web scraper application:
-
-1. `Data gathering and analysis`: Web scrapers can be used to gather data
-   from websites for various purposes, such as market research, price comparison,
-   and data analysis.
-2. `Automation`: Web scrapers can be used to automate data collection tasks,
-   freeing up time and resources for other activities.
-3. `Integration`: Web scrapers can be used to integrate data from multiple
-   sources into a single system or database.
-4. `Monitoring`: Web scrapers can be used to monitor websites for changes or
-   updates, allowing organizations to stay up to date with the latest information.
-5. `Personalization`: Web scrapers can be used to personalize content or
-   recommendations based on an individual's browsing history or preferences.
-6. `Competitive advantage`: Web scrapers can be used to gather data on competitors,
-   allowing organizations to stay ahead of the competition and make informed business decisions.
+<h1 ><a id="title" href="#">Cordova React Multi-Platform Application</a> </h1>
 
 <hr/>
 
