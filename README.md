@@ -31,17 +31,7 @@ So while Cordova is primarily designed for building mobile applications, it can 
 used to build web-based applications that can run in a web browser, either as a standalone
 application or as part of a mobile application.
 
-
 <hr />
-
-<h4><a href="./docs/sample.md" id="sample" >For More Details About Cordova, See Sample Web Scraper</a></h4>
-
-<hr />
-
-
-
----
-
 
 ## Create Cordova React Application
 
@@ -185,4 +175,3 @@ Now we can build and run our app.
 npm run build
 cordova emulate ios
 ```
-52:54:00:d9:98:95Ss
