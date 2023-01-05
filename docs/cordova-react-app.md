@@ -425,25 +425,9 @@ we do:
        }
        ```
 
-
-
 <hr />
 
-<h2><a href="#" id="android-emulator">Setup Android Emulator</a></h2>
-
-<a href="https://cordova.apache.org/docs/en/10.x/guide/platforms/android/index.html" >See Cordova Android Platform Guide For More Details</a>
-
-TODO: add setup instructions
-
-
-
-
-
-
-
-
-
-
+<h3>[Click Here To Setup Android Emulator](./android-emulator.md)</h3>
 
 
 
