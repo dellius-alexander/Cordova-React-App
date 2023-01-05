@@ -24,3 +24,13 @@ yarn-error.log*
 
 
 /**/.idea
+.cordova_assets
+
+# cordove build directory
+/www/*
+
+# remove platform directories
+/platforms
+
+# remove plugins directory
+/plugins

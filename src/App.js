@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import './static/css/platform.css'
+const { platformConstants } = require('./static/js/platform');
 
-function App() {
+export default function App() {
+
   return (
     <div className="App">
       <header className="App-header">
@@ -9,17 +12,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+          <div><h2 className="appFullName">{platformConstants.appFullName}</h2></div>
       </header>
+
     </div>
   );
 }
-
-export default App;
