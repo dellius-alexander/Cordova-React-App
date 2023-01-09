@@ -6,7 +6,7 @@
   "description": "Sample React Cordova multiplatform application, with update boilerplate code",
   "scripts": {
     "prestart": "echo NODE_ENV=development | npm run build; cordova build;",
-    "start-browser": "echo NODE_ENV=development | npm run build; node scripts/start.js;",
+    "start-browser": "echo NODE_ENV=development | npm run build; cordova run browser",
     "start-ios": "echo NODE_ENV=development | npm run build; cordova build ios; cordova emulate ios --debug;",
     "start-android": "echo 'NODE_ENV=development' | npm run build; cordova build android; cordova emulate android --debug;",
     "build": "echo NODE_ENV=development | node scripts/build.js",
@@ -159,7 +159,8 @@
   "cordova": {
     "platforms": [
       "android",
-      "ios"
+      "ios",
+      "browser"
     ],
     "plugins": {
       "cordova-plugin-device": {}
@@ -167,6 +168,7 @@
   },
   "devDependencies": {
     "cordova-android": "^10.1.2",
+    "cordova-browser": "^6.0.0",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-device": "^2.1.0",
     "cordova-webpack-plugin": "^0.1.0"

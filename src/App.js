@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import './static/css/platform.css'
-const { platformConstants } = require('./static/js/platform');
 
 export default function App() {
 
@@ -12,9 +11,9 @@ export default function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-          <div><h2 className="appFullName">{platformConstants.appFullName}</h2></div>
+          {/* //eslint-disable-next-line (Ignoring platformConstants)*/}
+          {/*<div className="appFullName"></div>*/}
       </header>
-
     </div>
   );
 }

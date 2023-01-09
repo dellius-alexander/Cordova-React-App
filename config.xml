@@ -54,11 +54,11 @@
 
     </platform>
 
-<!--    &lt;!&ndash;    Browser Platform    &ndash;&gt;-->
-<!--    <platform name="browser">-->
-<!--        <webpack-config src="./config/webpack.config.js" />-->
-<!--        <resource-file src="merges/browser" target="www" />-->
-<!--    </platform>-->
+    <!--    Browser Platform    -->
+    <platform name="browser">
+        <webpack-config src="./config/webpack.config.js" />
+        <resource-file src="merges/browser" target="www" />
+    </platform>
 
     <!--    Cordova Plugins     -->
 <!--    <plugin name="cordova-plugin-dialogs" spec="2.0.2" />-->
