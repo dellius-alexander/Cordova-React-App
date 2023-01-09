@@ -635,3 +635,20 @@ npm run start-ios
 # make sure emulator is installed and running
 npm run start-android
 ```
+
+---
+
+Your boilerplate application should look like this:
+
+<img src="docs/images/merges_web.png" alt="Browser App" style="max-width:300px;" />
+
+<img src="docs/images/merges_ios.png" alt="IOS App" style="max-width:300px;" />
+
+<img src="docs/images/merges_android.png" alt="Android App" style="max-width:300px;" />
+
+
+
+---
+
+
+
