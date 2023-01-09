@@ -324,7 +324,7 @@ your `config.xml` file:
 ```xml
 <platform name="android">
   ...
-  <webpack-config src="webpack.config.js" />
+  <webpack-config src="./config/webpack.config.js" />
   ...
 </platform>
 ```
@@ -348,13 +348,13 @@ platform by using the `name` attribute:
     ...
     <platform name="android">
         ...
-        <webpack-config src="webpack.android.config.js" />
+        <webpack-config src="./config/webpack.android.config.js" />
         ...
     </platform>
     ...
     <platform name="ios">
         ...
-        <webpack-config src="webpack.ios.config.js" />
+        <webpack-config src="./config/webpack.ios.config.js" />
         ...
     </platform>
     ...
@@ -395,9 +395,8 @@ we do:
    the following directories:
 
    ```bash
-   mkdir -p merges/{android,ios,browser}/{assets,css,img,js,libs,res}
+   mkdir -p merges/{android,ios,browser}/static/{css,img,js}
    mkdir -p merges/android/res/{layout,xml,icon}
-   mkdir -p merges/{ios,browser}/{res}/{icon}
    ```
 
 3. Add platform-specific files: Within each platform-specific directory, add any files that you
@@ -445,10 +444,10 @@ we do:
 
    In this example, the `merges/android/res/icon/icon.png` file would be merged into the
    `platforms/android/app/src/main/res/icon/icon.png` directory when building the Android version of
-   the app, and the `merges/ios/res/icon/icon.png` file would be merged into the
-   `platforms/ios/my-project/Resources/icons` directory when building the iOS version. This allows
-   you to include platform-specific icons in your project without having to maintain separate copies
-   of the same file for each platform.
+   the app, and the `merges/ios/static/js/platform.js` file would be merged into the
+   `platforms/ios/www/static/js/platform.js` directory when building the iOS version. This allows
+   you to include platform-specific dependencies/changes in your project without having to maintain separate copies
+   of all the same files for each platform.
 
 4. Modify the `config.xml` file: In the root of your Cordova project, open the `config.xml`
    file and add the following line to each platform configuration:
@@ -461,21 +460,50 @@ we do:
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
    >
-   ...
+   
+   <!--    Android Platform    -->
    <platform name="android">
-       ...
-       <webpack-config src="./config/webpack.config.js" />
-       <resource-file src="merges/android/*" target="www" />     
-       ...
-    </platform>
-   ...
-   <platform name="ios">
-       ...
-       <webpack-config src="./config/webpack.config.js" />
-       <resource-file src="merges/ios/*" target="www" />
-       ...
+        <!-- Required to set minSdkVersion  -->
+        <preference name="android-minSdkVersion" value="29" />
+        <!-- Required to set targetSdkVersion  -->
+        <preference name="android-targetSdkVersion" value="31" />
+        <edit-config
+                file="AndroidManifest.xml"
+                mode="merge"
+                target="/manifest/application" >
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+        ...
+        <webpack-config src="./config/webpack.config.js" />
+        <resource-file src="merges/android/static" target="app/src/main/assets/www/static" />
+        <resource-file src="merges/android/res" target="app/src/main/res" />    
+        ...
    </platform>
-   ...
+   
+   <!--    IOS Platform    -->
+   <platform name="ios">
+   <preference name="deployment-target" value="13.0.0" />
+        <!--
+        InAppBrowserStatusBarStyle [iOS only]: (string, options 'lightcontent',
+        'darkcontent' or 'default'. Defaults to 'default') set text color style for iOS.
+        'lightcontent' is intended for use on dark backgrounds. 'darkcontent' is only
+        available since iOS 13 and intended for use on light backgrounds.
+        -->
+        <preference name="InAppBrowserStatusBarStyle" value="lightcontent" />
+        <!--
+        Since the introduction of iPadOS 13, iPads try to adapt their content mode / user
+        agent for the optimal browsing experience. This may result in iPads having their
+        user agent set to Macintosh, making it hard to detect them as mobile devices using
+        user agent string sniffing.
+        -->
+        <preference name="PreferredContentMode" value="mobile" />
+        ...
+        <webpack-config src="./config/webpack.config.js" />
+        <resource-file src="merges/ios/*" target="www" />
+        ...
+   </platform>
+   
+    <!--    Browser Platform    -->
    <platform name="browser">
        ...
        <webpack-config src="./config/webpack.config.js" />

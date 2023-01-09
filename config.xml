@@ -51,7 +51,6 @@
         <preference name="PreferredContentMode" value="mobile" />
         <webpack-config src="./config/webpack.config.js" />
         <resource-file src="merges/ios/static" target="merges" />
-
     </platform>
 
     <!--    Browser Platform    -->
