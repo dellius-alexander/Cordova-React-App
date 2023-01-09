@@ -640,13 +640,16 @@ npm run start-android
 
 Your boilerplate application should look like this:
 
-<img src="docs/images/merges_web.png" alt="Browser App" style="max-width:300px;" />
+<!-- Image Collection -->
 
-<img src="docs/images/merges_ios.png" alt="IOS App" style="max-width:300px;" />
-
-<img src="docs/images/merges_android.png" alt="Android App" style="max-width:300px;" />
-
-
+<div style="text-align:center;">
+    <img src="images/merges_web.png" alt="Browser App" style="max-width:400px;" />
+    <br/>
+    <img src="images/merges_ios.png" alt="IOS App" style="max-width:300px;" />
+    <br/>
+    <img src="images/merges_android.png" alt="Android App" style="max-width:300px;" />
+    <br/>
+</div>
 
 ---
 
