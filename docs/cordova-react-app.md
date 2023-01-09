@@ -1,4 +1,4 @@
-<h1 id="#title"><a href="#">Cordova </a></h1>
+<h1 ><a href="#" id="title">Build a Cordova React App </a></h1>
 <hr/>
 
 
@@ -48,26 +48,153 @@ Use Apache Cordova if you are:
 
 <hr/>
 
-<h2 id="#sample"><a href="#">Sample App Starter</a></h2>
+<h2 id="sample"><a href="#">Create Cordova React Application</a></h2>
 
-Here is a brief overview of how you can build a web scraper using
-Apache Cordova, Node.js, and JavaScript for the browser, iOS, and
-Android platforms:
-
-1. First, install Apache Cordova using npm (Node Package Manager):
+1. First, install `Apache Cordova` using npm (Node Package Manager) and `create-react-app`:
 
     ```bash
-    npm install -g cordova
+    npm install -g cordova create-react-app
     ```
+   - Run the following commands:
 
-2. Create a new Cordova project:
+      ```bash
+      # 1. create the react app first
+      npx create-react-app cordova-react-app
+      # 2. commit to git 
+      git add . && git commit -m "initial commit"
+      # 3. eject the app
+      npm run eject
+      ```
 
-    ```bash
-    cordova create myapp
-    cd myapp
-    ```
+   This will create a `config/` directory in the root of your project.
 
-3. Add the platforms you want to support (e.g. browser, iOS, Android):
+2. We create the cordova app by running:
+
+   ```bash
+   # 4. create the cordova app from root directory enter
+   cordova create cordovareactapp com.example.cordovareact CordovaApp
+   ```
+
+3. We move the `config.xml` from the cordovareact app to the root of the top level project.
+
+4. Next we must edit the `buildPath` variable in the `config/paths.js` file to integrate with cordova.
+Change the line where `const buildPath = process.env.BUILD_PATH || 'build'` to:
+
+   ```javascript
+   const buildPath = process.env.BUILD_PATH || 'www';
+   ```
+
+5. We add the field `"homepage": "./"` to the `package.json` file in the root of your project.
+
+6. We goto `src/index.js` and add the following:
+
+   ```javascript
+   /**
+    * Initialize the react app in no matter the platform
+    */
+   const initializeApp = () => {
+       const root = ReactDOM.createRoot(document.getElementById('root'));
+       root.render(
+           <React.StrictMode>
+               <App />
+           </React.StrictMode>
+       );
+       // If you want to start measuring performance in your app, pass a function
+       // to log results (for example: reportWebVitals(console.log))
+       // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+       reportWebVitals();
+   }
+   
+   // if the device is ios or android use cordova,
+   if (window.cordova) {
+       // Wait for the deviceready event before using any of Cordova's device APIs.
+   // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
+       document.addEventListener('deviceready', initializeApp, false);
+   } else { // instead use the for regular browser web app
+       initializeApp();
+   }
+   ```
+
+7. We add the following to the `public/index.html` file. If this is a boilerplate code
+you can copy the snippet below:
+
+- What we did:
+  - added and updated `Content-Security-Policy` meta tag.
+    - added additional meta tags for:
+       - `format-detection`
+       - `msapplication-tap-highlight`
+       - `viewport`
+
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="utf-8" />
+       <!--
+          Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+              https://cordova.apache.org/docs/en/latest/
+          Some notes:
+              * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+              * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                  * Enable inline JS: add 'unsafe-inline' to default-src
+          -->
+       <meta
+               http-equiv="Content-Security-Policy"
+               content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"
+       />
+       <meta name="format-detection" content="telephone=no" />
+       <meta name="msapplication-tap-highlight" content="no" />
+       <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover" />
+       <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+       <meta name="theme-color" content="#000000" />
+       <meta
+               name="description"
+               content="Web site created using create-react-app"
+       />
+       <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+       <!--
+         manifest.json provides metadata used when your web app is installed on a
+         user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+       -->
+       <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+       <!--
+         Notice the use of %PUBLIC_URL% in the tags above.
+         It will be replaced with the URL of the `public` folder during the build.
+         Only files inside the `public` folder can be referenced from the HTML.
+      
+         Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+         work correctly both with client-side routing and a non-root public URL.
+         Learn how to configure a non-root public URL by running `npm run build`.
+       -->
+       <!-- Added to demonstrate merges -->
+       <link rel="stylesheet" type="text/css"  src="./static/css/platform.css" />
+      
+       <!--    Tab title   -->
+       <title>Cordova React App</title>
+   </head>
+   <body>
+   <noscript>You need to enable JavaScript to run this app.</noscript>
+   <div id="root"></div>
+      
+   <!--
+     This HTML file is a template.
+     If you open it directly in the browser, you will see an empty page.
+      
+     You can add webfonts, meta tags, or analytics to this file.
+     The build step will place the bundled scripts into the <body> tag.
+      
+     To begin the development, run `npm start` or `yarn start`.
+     To create a production bundle, use `npm run build` or `yarn build`.
+   -->
+      
+   <script type="text/javascript" src="cordova.js"></script>
+   <script type="text/javascript" src="./static/js/platform.js"></script>
+      
+   </body>
+   </html>
+   ```
+
+8. Add the platforms you want to support (e.g. browser, iOS, Android):
 
     ```bash
     cordova platform add browser
@@ -75,52 +202,21 @@ Android platforms:
     cordova platform add android
    ```
 
-4. Install the required dependencies for web scraping, such as the
-   `request` and `cheerio` libraries:
+9. Build and run your Cordova project using the cordova run/emulate command:
 
-    ```bash
-    npm install request cheerio
-
-    ```
-
-5. Create a new JavaScript file (e.g. `scraper.js`) and import the
-   `request` and `cheerio` libraries:
-
-    ```javascript
-    const request = require('request');
-    const cheerio = require('cheerio');
-    ```
-
-6. Use the `request` library to send an HTTP request to the website
-   you want to scrape, and use the `cheerio` library to parse the HTML
-   response and extract the data you need. Create a file called `js/scraper.js`
-   with the following code to scrape a website:
-
-    ```javascript
-    module.exports = function scrape(url, callback){
-        request(url, (error, response, html) => {
-            if (!error && response.statusCode === 200) {
-            const $ = cheerio.load(html);
-            // Extract data from the HTML response using jQuery-like syntax
-            const data = $('#profile').attr('class').text();
-            console.log(data);
-            callback(data);
-            }
-        });
-    }
-    ```
-
-7. Build and run your Cordova project using the cordova run command:
+   *Note: [See Android Emulator](android-emulator.md) to setup an `android virtual device`. 
+We need this in order to run android correctly. Also, note that `cordova-plugin-device` is 
+also a needed dependency to run mobile devices.*
 
     ```bash
     cordova build
     cordova run browser
-    cordova run ios
+    cordova emulate ios
    # Note: You must download android emulator in order to run android
-    cordova run android
+    cordova emulate android
     ```
    
-   <a href="#android-emulator">See here for more details on how to setup the android emulator</a>
+   ### [Click here for more details on how to setup the android emulator](android-emulator.md)
 
 <hr/>
 
@@ -188,6 +284,9 @@ cordova-plugin-webpack 1.0.5 "Webpack"
 
 If you want all page loads in your app to go through the InAppBrowser,
 you can simply hook `window.open` during initialization. For example:
+
+
+*Note: this is usually found in `src/index.js`*
 
 ```javascript
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -288,7 +387,7 @@ without polluting the app's `single JavaScript codebase`.
 You can add platforms, such as iOS, Windows, Electron and Android platform specific files. To use merges
 we do:
 
-1. `Create a merges directory structure`: Next, create a new directory called `merges` in the root of your Cordova
+1. `Create a merges directory structure`: create a new directory called `merges` in the root of your Cordova
    project. This directory will be used to store platform-specific files that will be merged into your
    project at build time.
 2. `Create platform-specific directories`: Within the `merges` directory, create a subdirectory for each
@@ -311,35 +410,31 @@ we do:
        - my-project/
            - merges/
                - android/
-                   - css/
-                   - img/
-                   - js/  
-                   - libs/
-                   - assets/
-                   - java/  
+                   - static/
+                       - css/
+                            platform.css
+                       - img/
+                       - js/
+                            platform.js
                    - res/
                        - layout/
                        - xml/  
                        - icon/
                            icon.png
                - ios/
-                   - css/
-                   - img/
-                   - js/
-                   - libs/
-                   - assets/
-                   - res/
-                       - icon/
-                           icon.png
+                   - static/
+                       - css/
+                            platform.css
+                       - img/
+                       - js/
+                            platform.js
                - browser/
-                   - css/
-                   - img/
-                   - js/
-                   - libs/
-                   - assets/
-                   - res/
-                       - icon/
-                           icon.png
+                   - static/
+                       - css/
+                            platform.css
+                       - img/
+                       - js/
+                            platform.js
        - www/
           - index.html
           - css/
@@ -369,65 +464,116 @@ we do:
    ...
    <platform name="android">
        ...
-       <resource-file src="merges/android/*" target="merges" />     
+       <webpack-config src="./config/webpack.config.js" />
+       <resource-file src="merges/android/*" target="www" />     
        ...
     </platform>
    ...
    <platform name="ios">
        ...
-       <resource-file src="merges/ios/*" target="merges" />
+       <webpack-config src="./config/webpack.config.js" />
+       <resource-file src="merges/ios/*" target="www" />
+       ...
+   </platform>
+   ...
+   <platform name="browser">
+       ...
+       <webpack-config src="./config/webpack.config.js" />
+       <resource-file src="merges/browser/*" target="www" />
        ...
    </platform>
    ...
    </widget>
    ```
 
-5. Lets `customize merges for Android and iOS platforms` to make sure our platform specific behavior
+5. Lets `customize merges for Browser, Android and iOS platforms` to make sure our platform specific behavior
    will override the default Cordova application:
 
    ```text
-   # Place your custom platform specific behavior for android in these files
-   merges/android/css/platform.css
-   merges/android/js/platform.js
-   merges/android/img/logo.png
+   # Place your custom platform specific behavior for android in this directory
+   merges/android/static/css/platform.css
+   merges/android/static/js/platform.js
+   merges/android/static/img/logo.png
     
-   # Place your custom platform specific behavior for ios in these files
-   merges/ios/css/platforms.css
-   merges/ios/js/platform.js
-   merges/ios/img/logo.png
+   # Place your custom platform specific behavior for ios in this directory
+   merges/ios/static/css/platforms.css
+   merges/ios/static/js/platform.js
+   merges/ios/static/img/logo.png
+   
+   # Place your custom platform specific behavior for browser in this directory
+   merges/browser/static/css/platforms.css
+   merges/browser/static/js/platform.js
+   merges/browser/static/img/logo.png
    ```
 
     - Override the default platform specific styles behavior
 
        ```css
-       /* This is Android merges/ios/css/platform.css */
+       /* This is Android merges/android/static/css/platform.css */
        .event.received {
        background-color:#FF0000;
        }
     
-       /* This is iOS merges/ios/css/platform.css */
+       /* This is iOS merges/ios/static/css/platform.css */
        .event.received {
        background-color:#0000FF;
        }
+      
+      /* This is Browser merges/browser/static/css/platform.css */
+       .event.received {
+       background-color:#0010FF;
+       }
        ```   
-    - Override the default platform specific javascript behavior
+   - Override the default platform specific javascript behavior
 
-       ```javascript
-       /* This is Android merges/android/js/index.js */
-       const platformConstants = {
-           appFullName: 'Modus Create for Android'
-       }
-    
-    
-       /* This is iOS merges/ios/js/index.js */
-       const platformConstants = {
-           appFullName: 'iOS App by Modus Create'   
-       }
-       ```
+      ```javascript
+      /* This is Android merges/android/static/js/index.js */
+      // apply platform specific rules
+      function platformConstants() {
+      // platform specific rules
+      return `<h2 >Cordova React Android Application</h2>`;
+      }
+   
+      document.addEventListener("deviceready", () => {
+      const element = document.createElement('div');
+      element.style = 'text-align:center;';
+      element.innerHTML = platformConstants();
+      document.body.append(element);
+      },
+      false);
+
+      
+      /* This is iOS merges/ios/static/js/index.js */
+      // apply platform specific rules
+      function platformConstants() {
+      // platform specific rules
+      return `<h2 >Cordova React iOS Application</h2>`;
+      }
+   
+      document.addEventListener("deviceready", () => {
+      const element = document.createElement('div');
+      element.style = 'text-align:center;';
+      element.innerHTML = platformConstants();
+      document.body.append(element);
+      }, false);
+
+      
+     /* This is Browser merges/browser/static/js/index.js */
+      // apply platform specific rules
+      function platformConstants() {
+      // platform specific rules
+      return `<h2 >Cordova React Web Application</h2>`;
+      }
+   
+      document.addEventListener("deviceready", () => {
+      const element = document.createElement('div');
+      element.style = 'text-align:center;';
+      element.innerHTML = platformConstants();
+      document.body.append(element);
+      },
+      false);
+
+        ```
 
 <hr />
-
-<h3>[Click Here To Setup Android Emulator](./android-emulator.md)</h3>
-
-
 

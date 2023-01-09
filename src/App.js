@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import './static/css/platform.css'
 
 export default function App() {
 
@@ -11,8 +10,6 @@ export default function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-          {/* //eslint-disable-next-line (Ignoring platformConstants)*/}
-          {/*<div className="appFullName"></div>*/}
       </header>
     </div>
   );

@@ -1,19 +1,15 @@
-/* This is Android index.js */
+/* This is Android merges/android/static/js/platform.js */
 
 // apply platform specific rules
 function platformConstants() {
     // platform specific rules
-    // execute when page load starts
-    document.addEventListener('load', () => {
-            return document.querySelector('div . appFullName').textContent = "<h2>Cordova React Android Application</h2>"
-
-        },
-        false);
+    return `<h2 >Cordova React Android Application</h2>`;
 }
 
-
-// const platformConstants = {
-//     appFullName: "Web Scraper Web Application"
-// }
-
-platformConstants();
+document.addEventListener("deviceready", () => {
+    const element = document.createElement('div');
+    element.style = 'text-align:center;';
+    element.innerHTML = platformConstants();
+    document.body.append(element);
+},
+    false);

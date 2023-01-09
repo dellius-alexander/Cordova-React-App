@@ -1,19 +1,15 @@
-/* This is iOS merges/ios/js/index.js */
+/* This is iOS merges/ios/static/js/index.js */
 
 // apply platform specific rules
 function platformConstants() {
     // platform specific rules
-    // execute when page load starts
-    document.addEventListener('load', () => {
-            return document.querySelector('div . appFullName').innerHTML = "<h2>Cordova React iOS Application</h2>"
-
-        },
-        false);
+    return `<h2 >Cordova React iOS Application</h2>`;
 }
 
+document.addEventListener("deviceready", () => {
+    const element = document.createElement('div');
+    element.style = 'text-align:center;';
+    element.innerHTML = platformConstants();
+    document.body.append(element);
+}, false);
 
-// const platformConstants = {
-//     appFullName: "Web Scraper iOS Application"
-// }
-
-platformConstants();
