@@ -605,3 +605,33 @@ we do:
 
 <hr />
 
+
+Now our environment has been successfully created. We can now start developing our application.
+
+Update your `package.json` script block to allow for easy startup:
+
+
+```json
+{
+  "scripts": {
+    "prestart": "echo NODE_ENV=development | npm run build; cordova build;",
+    "start": "cordova run browser ios android --debug;",
+    "start-browser": "echo NODE_ENV=development | npm run build; cordova run browser --debug;",
+    "start-ios": "echo NODE_ENV=development | npm run build; cordova build ios; cordova emulate ios --debug;",
+    "start-android": "echo 'NODE_ENV=development' | npm run build; cordova build android; cordova emulate android --debug;",
+    "build": "echo NODE_ENV=development | node scripts/build.js",
+    "test": "echo NODE_ENV=development | node scripts/test.js"
+  }
+}
+```
+
+
+Now run `npm run start-[platform]` to run individual platform: 
+
+```bash
+npm run start-browser
+# make sure emulator is installed and running via xcode
+npm run start-ios
+# make sure emulator is installed and running
+npm run start-android
+```

@@ -6,6 +6,7 @@
   "description": "Sample React Cordova multiplatform application, with update boilerplate code",
   "scripts": {
     "prestart": "echo NODE_ENV=development | npm run build; cordova build;",
+    "start": "cordova run browser ios android --debug;",
     "start-browser": "echo NODE_ENV=development | npm run build; cordova run browser --debug;",
     "start-ios": "echo NODE_ENV=development | npm run build; cordova build ios; cordova emulate ios --debug;",
     "start-android": "echo 'NODE_ENV=development' | npm run build; cordova build android; cordova emulate android --debug;",
