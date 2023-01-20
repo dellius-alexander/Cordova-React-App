@@ -6,7 +6,7 @@
 // apply platform specific rules
 function platformConstants() {
     // platform specific rules
-    return `<h2 >Cordova React Web Application</h2>`;
+    return (`<h2 >Cordova React Web Application</h2>`);
 }
 
 document.addEventListener("deviceready", () => {
