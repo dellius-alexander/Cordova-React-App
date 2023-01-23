@@ -2,6 +2,18 @@
 
 <hr/>
 
+<div>
+   <h2><a href="docs/cordova-react-app.md">Create your own Cordova React multi-platform application</a></h2>
+
+<p><strong>Note:</strong> This is a <strong>template repository</strong> created for use-cases where a <strong>Web View</strong> 
+can be used to render a single code base across multiple platforms. For configuration info see: <a href="docs/use-as-template.md">Using 
+this repository as a template to get started</a> </p>
+
+</div>
+
+
+<hr/>
+
 <h2><a id="cordova">Why Apache Cordova?</a></h2>
 
 `Apache Cordova` is a `mobile development platform` that allows you to create `cross-platform
@@ -33,6 +45,6 @@ application or as part of a mobile application.
 
 <hr />
 
-### [Not lets read `cordova-react-app` instructions to setup your own Cordova React multi-platform application.](./docs/cordova-react-app.md)
+---
 
 
