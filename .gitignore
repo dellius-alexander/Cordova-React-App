@@ -27,7 +27,8 @@ yarn-error.log*
 .cordova_assets
 
 # cordove build directory
-/www/*
+!www
+www/**
 
 # remove platform directories
 /platforms
@@ -36,5 +37,7 @@ yarn-error.log*
 /plugins
 
 /.backup
+
+/.idea
 
 /.fleet
