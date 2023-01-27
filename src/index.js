@@ -10,7 +10,7 @@ import reportWebVitals from './reportWebVitals';
 const initializeApp = () => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
-            <App/>
+        <App/>
         // <React.StrictMode>
         //     <App />
         // </React.StrictMode>
@@ -20,7 +20,7 @@ const initializeApp = () => {
     // to log results (for example: reportWebVitals(console.log))
     // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
     reportWebVitals(console.log);
-}
+};
 
 // if the device is ios or android use cordova,
 if (window.cordova) {

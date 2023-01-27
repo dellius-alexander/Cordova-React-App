@@ -10,7 +10,7 @@
     "start-browser": "echo NODE_ENV=development | npm run build; cordova run browser --debug;",
     "start-ios": "echo NODE_ENV=development | npm run build; cordova build ios; cordova emulate ios --debug;",
     "start-android": "echo 'NODE_ENV=development' | npm run build; cordova build android; cordova emulate android --debug;",
-    "build": "echo NODE_ENV=development | node scripts/build.js",
+    "build": "echo NODE_ENV=development | node scripts/build.js; cordova build --debug;",
     "test": "echo NODE_ENV=development | node scripts/test.js"
   },
   "author": "Dellius Alexander <dellius.alexander@gmail.com>",
@@ -161,8 +161,7 @@
   "cordova": {
     "platforms": [
       "android",
-      "ios",
-      "browser"
+      "ios"
     ],
     "plugins": {
       "cordova-plugin-device": {}
@@ -170,7 +169,6 @@
   },
   "devDependencies": {
     "cordova-android": "^10.1.2",
-    "cordova-browser": "^6.0.0",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-device": "^2.1.0",
     "cordova-webpack-plugin": "^0.1.0"

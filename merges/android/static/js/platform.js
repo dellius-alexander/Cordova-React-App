@@ -3,13 +3,14 @@
 // apply platform specific rules
 function platformConstants() {
     // platform specific rules
+    // eslint-disable-next-line quotes
     return `<h2 >Cordova React Android Application</h2>`;
 }
 
-document.addEventListener("deviceready", () => {
+document.addEventListener('deviceready', () => {
     const element = document.createElement('div');
     element.style = 'text-align:center;';
     element.innerHTML = platformConstants();
     document.body.append(element);
 },
-    false);
+false);
