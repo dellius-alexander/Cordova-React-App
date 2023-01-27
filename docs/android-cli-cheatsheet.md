@@ -2,7 +2,7 @@
 
 ## See also
 
-[Cheatsheet for adb commands](https://gist.github.com/phlummox/5be8250e9b255d80198fa9e4ad200c1d), forked from [Pulimet/AdbCommands](https://gist.github.com/Pulimet/5013acf2cd5b28e55036c82c91bd56d8)
+      [Cheatsheet for adb commands](https://gist.github.com/phlummox/5be8250e9b255d80198fa9e4ad200c1d), forked from [Pulimet/AdbCommands](https://gist.github.com/Pulimet/5013acf2cd5b28e55036c82c91bd56d8)
 
 ## Download Android command-line tools
 
